@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "07337d80-cebe-43c0-afcc-a0501352b7e3",
+		"name": "aa bibit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get movie list",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"adamzulkarnain@gmail.com\",\n    \"username\": \"adamzul\",\n\t\"address\": \"sunter agung\",\n    \"password\": \"lemonelo\"\n\t\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/v1/movie-list?page=1&search=spiderman",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"v1",
+						"movie-list"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "search",
+							"value": "spiderman"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get movie detail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"adamzulkarnain@gmail.com\",\n    \"username\": \"adamzul\",\n\t\"address\": \"sunter agung\",\n    \"password\": \"lemonelo\"\n\t\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/v1/movie-list?search=spiderman",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"v1",
+						"movie-list"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "spiderman"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
