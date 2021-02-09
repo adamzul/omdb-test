@@ -12,8 +12,6 @@ func Route(router *gin.Engine) {
 	omdb := controllers.OmdbControllerHandler()
 	group := router.Group("/v1")
 	group.GET("/movie-list", omdb.GetList)
-	// group.GET("user/:uuid", user.Get)
-	// group.PUT("user/:uuid", user.Update)
-	// group.DELETE("user/:uuid", user.Delete)
+	group.GET("/movie-detail/:id", omdb.GetDetail)
 
 }

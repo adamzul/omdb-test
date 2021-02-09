@@ -6,7 +6,6 @@ import (
 	"omdbapi/objects"
 	"omdbapi/services"
 	"strconv"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -50,7 +49,6 @@ func (o OmdbController) GetList(context *gin.Context) {
 
 	go func(params objects.OmdbAPIListRequestObject) {
 
-		time.Sleep(5 * time.Second)
 		searchLog := models.SearchLogModel{
 			SearchKey: params.Search,
 			Page:      params.Page,
@@ -64,6 +62,22 @@ func (o OmdbController) GetList(context *gin.Context) {
 			return
 		}
 	}(params)
+
+	context.JSON(http.StatusOK, response)
+}
+
+func (o OmdbController) GetDetail(context *gin.Context) {
+
+	id := context.Param("id")
+
+	response, err := o.omdbService.GetDetail(id)
+
+	if err != nil {
+		context.JSON(500, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
 
 	context.JSON(http.StatusOK, response)
 }

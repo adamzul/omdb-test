@@ -42,3 +42,26 @@ func (o OmdbService) GetList(params objects.OmdbAPIListRequestObject) (objects.O
 	}
 	return omdbAPIResponse, nil
 }
+
+func (o OmdbService) GetDetail(id string) (objects.OmdbAPIDetailResponseObject, error) {
+	url := fmt.Sprintf("http://www.omdbapi.com/?apikey=%s&i=%s", os.Getenv("OMDB_API_KEY"), id)
+	requestToOmdb, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return objects.OmdbAPIDetailResponseObject{}, err
+	}
+	httpClient := &http.Client{}
+	response, err := httpClient.Do(requestToOmdb)
+	if err != nil {
+		return objects.OmdbAPIDetailResponseObject{}, err
+	}
+	fmt.Printf("%v \n", response.Body)
+	if int(response.StatusCode/100) != 2 {
+		return objects.OmdbAPIDetailResponseObject{}, fmt.Errorf("status %d", response.StatusCode)
+	}
+	var omdbAPIResponse objects.OmdbAPIDetailResponseObject
+	err = json.NewDecoder(response.Body).Decode(&omdbAPIResponse)
+	if err != nil {
+		return objects.OmdbAPIDetailResponseObject{}, err
+	}
+	return omdbAPIResponse, nil
+}
